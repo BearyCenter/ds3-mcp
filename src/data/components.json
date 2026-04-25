@@ -1,90 +1,6664 @@
 {
   "version": "3.1.2",
-  "lastSync": "2026-04-24",
+  "lastSync": "2026-04-25",
+  "total": 91,
   "components": [
     {
-      "tag": "ssk-button",
-      "category": "Form & Input",
-      "description": "Lit Web Component — primary action button รองรับ variant, size, loading, disabled",
+      "tag": "ssk-accordion",
+      "className": "Accordion",
+      "category": "Navigation",
+      "description": "",
       "props": [
-        { "name": "variant", "type": "solid | outline | ghost | solid-light", "default": "solid", "desc": "รูปแบบ button" },
-        { "name": "themeColor", "type": "primary | danger | success | warning | info", "default": "primary", "desc": "สี button ตาม theme" },
-        { "name": "size", "type": "xs | sm | md | lg | xl", "default": "md", "desc": "ขนาด" },
-        { "name": "disabled", "type": "boolean", "default": "false", "desc": "ปิดการใช้งาน" },
-        { "name": "loading", "type": "boolean", "default": "false", "desc": "แสดง loading state" },
-        { "name": "testId", "type": "string", "desc": "data-testid สำหรับ testing" }
-      ],
-      "slots": [
-        { "name": "default", "desc": "label ของ button" },
-        { "name": "prefix", "desc": "icon ก่อน label" },
-        { "name": "suffix", "desc": "icon หลัง label" }
-      ],
-      "events": [
-        { "name": "click", "desc": "เมื่อกด button" }
-      ],
-      "examples": [
-        "<ssk-button variant=\"solid\">Save</ssk-button>",
-        "<ssk-button variant=\"outline\" themeColor=\"danger\">Delete</ssk-button>",
-        "<ssk-button size=\"lg\" loading>Loading...</ssk-button>"
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "mode",
+          "type": "\"single\" | \"multiple\"",
+          "optional": false
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "\"clean\" | \"bordered\"",
+          "optional": false
+        },
+        {
+          "name": "items",
+          "type": "HTMLElement[]",
+          "optional": false
+        },
+        {
+          "name": "handleToggle",
+          "type": "(e: Event) => void",
+          "optional": false
+        }
       ]
     },
     {
-      "tag": "ssk-input",
-      "category": "Form & Input",
-      "description": "Text input — รองรับ label, placeholder, error, disabled, size",
+      "tag": "ssk-accordion-item",
+      "className": "AccordionItem",
+      "category": "Other",
+      "description": "",
       "props": [
-        { "name": "label", "type": "string", "desc": "ข้อความ label" },
-        { "name": "placeholder", "type": "string", "desc": "placeholder text" },
-        { "name": "type", "type": "text | email | password | number", "default": "text", "desc": "ประเภท input" },
-        { "name": "size", "type": "sm | md | lg", "default": "md", "desc": "ขนาด" },
-        { "name": "disabled", "type": "boolean", "default": "false", "desc": "ปิดการใช้งาน" },
-        { "name": "error", "type": "boolean", "default": "false", "desc": "แสดง error state" },
-        { "name": "value", "type": "string", "desc": "ค่าของ input" }
-      ],
-      "events": [
-        { "name": "input", "desc": "เมื่อพิมพ์" },
-        { "name": "change", "desc": "เมื่อ blur" }
-      ],
-      "examples": [
-        "<ssk-input label=\"Email\" placeholder=\"name@example.com\" type=\"email\"></ssk-input>"
+        {
+          "name": "id",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-addon-phone-country",
+      "className": "AddonPhoneCountry",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "countries",
+          "type": "{ code: string; name?: string; phoneCode?: string; }[]",
+          "optional": false
+        },
+        {
+          "name": "allowedCountries",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-advanced-data-table",
+      "className": "AdvancedDataTable",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "columns",
+          "type": "ADTColumn[]",
+          "optional": false
+        },
+        {
+          "name": "rows",
+          "type": "ADTRow[]",
+          "optional": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "emptyMessage",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "total",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "pageSizeOptions",
+          "type": "number[]",
+          "optional": false
+        },
+        {
+          "name": "selectable",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "expandable",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "sortKey",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "sortDir",
+          "type": "\"asc\" | \"desc\"",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-alert",
+      "className": "Alert",
+      "category": "Feedback",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "margin",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "Type",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "topic",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-app-shell",
+      "className": "AppShell",
+      "category": "Layout",
+      "description": "",
+      "props": [
+        {
+          "name": "navbarHeight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "sidebarWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "sidebarCollapsedWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "sidebarCollapsed",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "noSidebar",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "noNavbar",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-app-shell-provider",
+      "className": "AppShellProvider",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "brand",
+          "type": "AppShellBrand",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-avatar",
+      "className": "Avatar",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "boxsize",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "shape",
+          "type": "\"circle\" | \"rounded\"",
+          "optional": true
+        },
+        {
+          "name": "objectFit",
+          "type": "\"fill\" | \"contain\" | \"cover\" | \"none\" | \"scale-down\" | undefined",
+          "optional": true
+        }
       ]
     },
     {
       "tag": "ssk-badge",
+      "className": "Badge",
       "category": "Data Display",
-      "description": "Label สำหรับแสดง status, category หรือ count",
+      "description": "",
       "props": [
-        { "name": "color", "type": "default | success | warning | danger | info", "default": "default", "desc": "สีของ badge" },
-        { "name": "size", "type": "sm | md | lg", "default": "md", "desc": "ขนาด" },
-        { "name": "dot", "type": "boolean", "default": "false", "desc": "แสดงเป็น dot เท่านั้น" }
-      ],
-      "examples": [
-        "<ssk-badge color=\"success\">Active</ssk-badge>",
-        "<ssk-badge dot></ssk-badge>"
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariants",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        }
       ]
     },
     {
-      "tag": "ssk-theme-provider",
-      "category": "Foundation",
-      "description": "ครอบ component ทั้งหมดเพื่อ inject brand tokens — required สำหรับใช้ DS 3.0",
+      "tag": "ssk-bar-chart",
+      "className": "BarChart",
+      "category": "Charts",
+      "description": "",
       "props": [
-        { "name": "brand", "type": "patona | ccs3 | oc2plus", "default": "ccs3", "desc": "brand identity" }
-      ],
-      "examples": [
-        "<ssk-theme-provider brand=\"patona\"><ssk-button>Hello</ssk-button></ssk-theme-provider>"
+        {
+          "name": "series",
+          "type": "BarChartSeries[]",
+          "optional": false
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "showGrid",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "barGap",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-button",
+      "className": "Button",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "lineHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "boxShadow",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "dropShadow",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "maxWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "maxHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "ButtonVariants",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-calendar",
+      "className": "Calendar",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "month",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "year",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "locale",
+          "type": "LocaleKey",
+          "optional": false
+        },
+        {
+          "name": "todayText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "okText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "footerStyle",
+          "type": "\"between\" | \"middle\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "rangeDate",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disableYearChange",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disableMonthChange",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "displayGoToday",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "displayOk",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabledPrev",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabledNext",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "dateTo",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "dateFrom",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "hoveredDate",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "maxRange",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "disabledDate",
+          "type": "(date: number) => boolean",
+          "optional": true
+        },
+        {
+          "name": "dayNamesOfTheWeek",
+          "type": "Array<string>",
+          "optional": false
+        },
+        {
+          "name": "yearsList",
+          "type": "Array<number>",
+          "optional": false
+        },
+        {
+          "name": "daysOfMonth",
+          "type": "Array<Array<number | typeDay>>",
+          "optional": false
+        },
+        {
+          "name": "monthsList",
+          "type": "Array<string>",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showTime",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "timeFrom",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "timeTo",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "timeFormat",
+          "type": "\"hms\" | \"hm\" | \"timeEvery30\"",
+          "optional": false
+        },
+        {
+          "name": "currentTimeTarget",
+          "type": "\"dateFrom\" | \"dateTo\"",
+          "optional": false
+        },
+        {
+          "name": "disabledYears",
+          "type": "number[] | number | undefined",
+          "optional": true
+        },
+        {
+          "name": "minYear",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "maxYear",
+          "type": "number",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-card",
+      "className": "Card",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "image",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "TypeCard",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "VariantCard",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-card-group",
+      "className": "CardGroup",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "cards",
+          "type": "Card_2[]",
+          "optional": false
+        },
+        {
+          "name": "selectedCardIndex",
+          "type": "number | null",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-card-select",
+      "className": "CardSelect",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "cardSize",
+          "type": "CardSize",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-checkbox",
+      "className": "Checkbox",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "group",
+          "type": "GroupCheckbox | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-code-block",
+      "className": "CodeBlock",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "ColorRole | ColorName | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderStyle",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariants",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "language",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "copyButton",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "shikiTheme",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-container",
+      "className": "Container",
+      "category": "Layout",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "ColorRole | ColorName | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderStyle",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariants",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "cursor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "align",
+          "type": "\"center\" | \"start\" | \"end\"",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-country-icon",
+      "className": "CountryIcon",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "cursor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "optional": true
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconName",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-date-display",
+      "className": "DateDisplay",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "date",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "dateFormat",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "timeFormat",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "localeDateFormat",
+          "type": "Record<string, string>",
+          "optional": false
+        },
+        {
+          "name": "localeTimeFormat",
+          "type": "Record<string, string>",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-date-picker",
+      "className": "DatePicker",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Date | undefined",
+          "optional": false
+        },
+        {
+          "name": "rangeDate",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "displayGoToday",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "displayOk",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showTime",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "timeFormat",
+          "type": "\"hms\" | \"hm\" | \"timeEvery30\"",
+          "optional": false
+        },
+        {
+          "name": "locale",
+          "type": "LocaleKey_2",
+          "optional": false
+        },
+        {
+          "name": "alignCalendar",
+          "type": "\"left\" | \"right\"",
+          "optional": true
+        },
+        {
+          "name": "widthCalendar",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "disabledDate",
+          "type": "(date: number) => boolean",
+          "optional": true
+        },
+        {
+          "name": "disabledYears",
+          "type": "number[]",
+          "optional": true
+        },
+        {
+          "name": "minYear",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "maxYear",
+          "type": "number",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-divider",
+      "className": "Divider",
+      "category": "Layout",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "lineHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-donut-chart",
+      "className": "DonutChart",
+      "category": "Charts",
+      "description": "",
+      "props": [
+        {
+          "name": "slices",
+          "type": "DonutSlice[]",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "thickness",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "centerLabel",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "centerValue",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-download-file",
+      "className": "DownloadFile",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "margin",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-drawer",
+      "className": "Drawer",
+      "category": "Overlay",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "headerPadding",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "bodyPadding",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "side",
+          "type": "\"left\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "show",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideDivider",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-drawer-header",
+      "className": "DrawerHeader",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-dropdown",
+      "className": "Dropdown",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string | string[]",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "\"error\" | \"success\" | undefined",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "success",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "search",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "optionsAnchor",
+          "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "optionsAlign",
+          "type": "\"left\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "optionsWidth",
+          "type": "\"auto\" | \"fit\"",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "maxOptionsHeight",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "multiSelect",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "isSelected",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "clearValue",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "allowUnselect",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideCheckIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideErrorIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideSuccessIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "state",
+          "type": "DropdownState",
+          "optional": false
+        },
+        {
+          "name": "forceOpen",
+          "type": "undefined",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-dropdown-button",
+      "className": "DropdownButton",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "state",
+          "type": "DropdownState",
+          "optional": true
+        },
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "hideChevron",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-dropdown-option",
+      "className": "DropdownOption",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "state",
+          "type": "DropdownState",
+          "optional": true
+        },
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": true
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-dropdown-preview",
+      "className": "DropdownPreview",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "vault",
+          "type": "DropdownState",
+          "optional": true
+        },
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": true
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-dynamic-table",
+      "className": "DynamicTable",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "columnsWidth",
+          "type": "string[]",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "stripedBackgroundColor",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "selectable",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "selectedRows",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "state",
+          "type": "TableState",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-expandable-card",
+      "className": "ExpandableCard",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "\"outlined\" | \"elevated\"",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "\"expand-header\" | \"expand-footer\"",
+          "optional": false
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideToggle",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideText",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "expanded",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "radius",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "lazy",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "moreLabel",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "lessLabel",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-feature-page-scaffold",
+      "className": "FeaturePageScaffold",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "padding",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "fullHeight",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-filter-bar",
+      "className": "FilterBar",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "showSearch",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\" | \"lg\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-header-cell",
+      "className": "HeaderCell",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "tableState",
+          "type": "TableState",
+          "optional": true
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "sortable",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "sortDirection",
+          "type": "\"asc\" | \"desc\"",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-heading",
+      "className": "Heading",
+      "category": "Typography",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "lineHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "italic",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "underline",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "strike",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\" | \"justify\" | undefined",
+          "optional": true
+        },
+        {
+          "name": "transform",
+          "type": "\"uppercase\" | \"lowercase\" | \"capitalize\" | undefined",
+          "optional": true
+        },
+        {
+          "name": "level",
+          "type": "1 | 2 | 3 | 4 | 5",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-i18n-provider",
+      "className": "I18nProvider",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "store",
+          "type": "I18nStore",
+          "optional": false
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "lastUpdate",
+          "type": "number",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-icon",
+      "className": "Icon",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "cursor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "optional": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconName",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-image_2",
+      "className": "Image_2",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "lineHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderStyle",
+          "type": "\"solid\" | \"dashed\" | \"dotted\" | \"double\" | \"groove\" | \"ridge\" | \"inset\" | \"outset\" | \"none\" | \"hidden\" | undefined",
+          "optional": true
+        },
+        {
+          "name": "boxShadow",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "dropShadow",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "maxWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "maxHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "alt",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "src",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fallbackSrc",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "boxSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "objectFit",
+          "type": "\"fill\" | \"contain\" | \"cover\" | \"none\" | \"scale-down\" | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-image-cropper",
+      "className": "ImageCropper",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "src",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "shape",
+          "type": "\"circle\" | \"square\"",
+          "optional": false
+        },
+        {
+          "name": "maskSize",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "maskPadding",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "maxExportSize",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "fitToMask",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-input",
+      "className": "Input",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "\"text\" | \"number\" | \"password\" | \"email\" | \"tel\" | \"url\"",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "\"error\" | \"success\" | undefined",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "limit",
+          "type": "number | undefined",
+          "optional": false
+        },
+        {
+          "name": "showLimit",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "autoComplete",
+          "type": "\"on\" | \"off\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-input-addon",
+      "className": "InputAddon",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "\"text\" | \"number\" | \"password\" | \"email\" | \"tel\" | \"url\"",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-input-range",
+      "className": "InputRange",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholderFrom",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholderTo",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "type",
+          "type": "\"text\" | \"number\" | \"password\" | \"email\" | \"tel\" | \"url\"",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "minHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "valueFrom",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "valueTo",
+          "type": "string | undefined",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-inputtag",
+      "className": "Inputtag",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "minHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "tags",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "multiline",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "maxTagLength",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "totalChars",
+          "type": "number",
+          "optional": false
+        }
       ]
     },
     {
       "tag": "ssk-line-chart",
+      "className": "LineChart",
       "category": "Charts",
-      "description": "Line chart แบบ zero-dependency SVG",
+      "description": "",
       "props": [
-        { "name": "data", "type": "ChartData[]", "desc": "ข้อมูล chart" },
-        { "name": "width", "type": "number", "desc": "ความกว้าง (auto-responsive ถ้าไม่ใส่)" },
-        { "name": "showLegend", "type": "boolean", "default": "true", "desc": "แสดง legend" }
-      ],
-      "examples": [
-        "<ssk-line-chart .data=${chartData} show-legend></ssk-line-chart>"
+        {
+          "name": "series",
+          "type": "LineChartSeries[]",
+          "optional": false
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "smooth",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showDots",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showGrid",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-logo",
+      "className": "Logo",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "borderWidth",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "boxSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "fullLogo",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "srcLogo",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "altLogo",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "srcLogoName",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "altLogoName",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-menu-group",
+      "className": "MenuGroup",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "margin",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "header",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hiddenIcon",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-menu-items",
+      "className": "MenuItems",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "margin",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "MenuVariants",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-misc-icon",
+      "className": "MiscIcon",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "\"solid\" | \"light\" | \"outline\"",
+          "optional": false
+        },
+        {
+          "name": "iconName",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconColor",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-modal",
+      "className": "Modal",
+      "category": "Overlay",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "show",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideDivider",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-page-header",
+      "className": "PageHeader",
+      "category": "Layout",
+      "description": "",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "showBack",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "backLabel",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-pagination",
+      "className": "Pagination",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "currentPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "totalPages",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "rowsPerPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "startItems",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "endItems",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "allItems",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "selectedItems",
+          "type": "number[]",
+          "optional": false
+        },
+        {
+          "name": "showRowsPage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showRowsPerPage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showGoToPage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showBtnPage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "dropdownAnchor",
+          "type": "\"top\" | \"bottom\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-pin-code",
+      "className": "PinCode",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "\"text\" | \"number\"",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-progress-bar",
+      "className": "ProgressBar",
+      "category": "Feedback",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "labelPosition",
+          "type": "\"top\" | \"bottom\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "\"in-progress\" | \"error\" | \"success\"",
+          "optional": false
+        },
+        {
+          "name": "styleOfProgress",
+          "type": "\"text\" | \"icon\"",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-radio",
+      "className": "Radio",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-radio-group",
+      "className": "RadioGroup",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "borderColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "group",
+          "type": "GroupRadio | undefined",
+          "optional": true
+        },
+        {
+          "name": "inline",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-range-date-picker",
+      "className": "RangeDatePicker",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "placeholderFrom",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "placeholderTo",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "valueFrom",
+          "type": "Date | undefined",
+          "optional": false
+        },
+        {
+          "name": "valueTo",
+          "type": "Date | undefined",
+          "optional": false
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "displayGoToday",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "displayOk",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showTime",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "timeFormat",
+          "type": "\"hms\" | \"hm\" | \"timeEvery30\"",
+          "optional": false
+        },
+        {
+          "name": "locale",
+          "type": "LocaleKey_3",
+          "optional": false
+        },
+        {
+          "name": "alignCalendar",
+          "type": "\"left\" | \"right\"",
+          "optional": true
+        },
+        {
+          "name": "widthCalendar",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "disabledDate",
+          "type": "(date: number) => boolean",
+          "optional": true
+        },
+        {
+          "name": "disabledYears",
+          "type": "number[]",
+          "optional": true
+        },
+        {
+          "name": "minYear",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "maxYear",
+          "type": "number",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar",
+      "className": "Sidebar",
+      "category": "Navigation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "expanded",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "selectedItems",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "expandedGroups",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "state",
+          "type": "State",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar-account-switcher",
+      "className": "SidebarAccountSwitcher",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "account",
+          "type": "SidebarAccount",
+          "optional": true
+        },
+        {
+          "name": "accounts",
+          "type": "SidebarAccount[]",
+          "optional": false
+        },
+        {
+          "name": "expanded",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar-group",
+      "className": "SidebarGroup",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "expanded",
+          "type": "boolean",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar-header",
+      "className": "SidebarHeader",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar-items",
+      "className": "SidebarItems",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "actived",
+          "type": "boolean",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-sidebar-list",
+      "className": "SidebarList",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-skeleton",
+      "className": "Skeleton",
+      "category": "Feedback",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "skeletonShape",
+          "type": "\"capsule\" | \"circle\" | \"square\"",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "animationDuration",
+          "type": "number",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-spinner",
+      "className": "Spinner",
+      "category": "Feedback",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-stepper",
+      "className": "Stepper",
+      "category": "Navigation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "steps",
+          "type": "Step[]",
+          "optional": false
+        },
+        {
+          "name": "currentStep",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "activeIndex",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "errorStep",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "percent",
+          "type": "number | undefined",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-tab-button",
+      "className": "TabButton",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "\"inline\" | \"button\"",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\"",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-tab-header",
+      "className": "TabHeader",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "\"inline\" | \"button\"",
+          "optional": false
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\"",
+          "optional": false
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\"",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-table",
+      "className": "Table",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "columns",
+          "type": "Column[]",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "RowData[]",
+          "optional": false
+        },
+        {
+          "name": "showPaginationFooter",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "selectedRows",
+          "type": "number[]",
+          "optional": false
+        },
+        {
+          "name": "showCheckbox",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "selectAll",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "rowsPerPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "currentPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "showPageNavigation",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showRowsPerPageSelector",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showPageButtons",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showGoToPageInput",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "totalPaginationPages",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "maxVisiblePageButtons",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "customCell",
+          "type": "{ [dataIndex: string]: { render: (value: any, record: any, rowIndex: number) => string; onClick?: (value: any, record: any, rowIndex: number) => void; onChange?: (value: any, record: any, rowIndex: number) => void; }; }",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-table-cell",
+      "className": "TableCell",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "tableState",
+          "type": "TableState",
+          "optional": true
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-table-row",
+      "className": "TableRow",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "tableState",
+          "type": "TableState",
+          "optional": true
+        },
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "borderBottom",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "expanded",
+          "type": "undefined",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-tabs",
+      "className": "Tabs",
+      "category": "Navigation",
+      "description": "",
+      "props": [
+        {
+          "name": "activeIndex",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "borderWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "height",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "labels",
+          "type": "string[]",
+          "optional": false
+        },
+        {
+          "name": "variant",
+          "type": "TabVariants",
+          "optional": false
+        },
+        {
+          "name": "widthTab",
+          "type": "TabWidth",
+          "optional": false
+        },
+        {
+          "name": "tabSize",
+          "type": "TabSize",
+          "optional": false
+        },
+        {
+          "name": "min",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-tag",
+      "className": "Tag",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "variant",
+          "type": "BadgeVariants",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "cursor",
+          "type": "string | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-template",
+      "className": "Template",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "i18n",
+          "type": "I18nStore",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "optional": false
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "fallbackLang",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-text_2",
+      "className": "Text_2",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "lineHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "italic",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "underline",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "strike",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "align",
+          "type": "\"left\" | \"center\" | \"right\" | \"justify\" | undefined",
+          "optional": true
+        },
+        {
+          "name": "transform",
+          "type": "\"uppercase\" | \"lowercase\" | \"capitalize\" | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-textarea",
+      "className": "Textarea",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "width",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "helperText",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string | undefined",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "\"error\" | \"success\" | undefined",
+          "optional": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "rows",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "minHeight",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "minWidth",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "resize",
+          "type": "\"none\" | \"both\" | \"horizontal\" | \"vertical\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-theme-provider",
+      "className": "ThemeProvider",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": false
+        },
+        {
+          "name": "brand",
+          "type": "Brand",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-time",
+      "className": "Time",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "LocaleKey_4",
+          "optional": false
+        },
+        {
+          "name": "nowText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "okText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "footerStyle",
+          "type": "\"between\" | \"middle\" | \"right\" | \"left\"",
+          "optional": false
+        },
+        {
+          "name": "displayGoNow",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "displayOk",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "maxHeight",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "format",
+          "type": "TypeTime",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-timeline",
+      "className": "Timeline",
+      "category": "Data Display",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "rounded",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "Items",
+          "type": "TimelineItem[]",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "display",
+          "type": "\"vertical\" | \"horizontal\"",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-toast-provider",
+      "className": "ToastProvider",
+      "category": "Foundation",
+      "description": "",
+      "props": [
+        {
+          "name": "toast",
+          "type": "ToastStore",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-toggle",
+      "className": "Toggle",
+      "category": "Form & Input",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-tooltip",
+      "className": "Tooltip",
+      "category": "Feedback",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "placement",
+          "type": "Placement",
+          "optional": false
+        },
+        {
+          "name": "hideArrow",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hideCloseButton",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "trigger",
+          "type": "Trigger",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "areaPosition",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "maxWidth",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-top-navbar",
+      "className": "TopNavbar",
+      "category": "Navigation",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "tag": "ssk-translate",
+      "className": "Translate",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "i18n",
+          "type": "I18nStore",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "fallbackLang",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-wave-icon",
+      "className": "WaveIcon",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "iconName",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "themeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconColor",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "waveColor",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-example",
+      "className": "WidgetExample",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "widgetWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "widgetHeight",
+          "type": "string",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-grid",
+      "className": "WidgetGrid",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "draggable",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "gap",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "gridItemSize",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "maxColumns",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "items",
+          "type": "GridItem[]",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-matric",
+      "className": "WidgetMatric",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "widgetWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "widgetHeight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconLeftColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconLeft",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "imgUrl",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonVariant",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconRightColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "iconRight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "showSubtext",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showImage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showIconLeft",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showBadge",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showIconRight",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-table",
+      "className": "WidgetTable",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "widgetWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "widgetHeight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "badgeIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "showBadge",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showDescription",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "buttonColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonVariant",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "disabledButton",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "tableColumns",
+          "type": "any[]",
+          "optional": false
+        },
+        {
+          "name": "tableData",
+          "type": "any[]",
+          "optional": false
+        },
+        {
+          "name": "totalItems",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "currentPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "rowsPerPage",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "emptyImage",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "maxVisiblePageButtons",
+          "type": "number",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-title",
+      "className": "WidgetTitle",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "widgetWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "widgetHeight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "titleText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonVariant",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "dropdownOptions",
+          "type": "DropdownItem[]",
+          "optional": false
+        },
+        {
+          "name": "showSubtext",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonText",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "actionType",
+          "type": "ActionType",
+          "optional": false
+        },
+        {
+          "name": "disabledButton",
+          "type": "boolean",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "tag": "ssk-widget-user-detail",
+      "className": "WidgetUserDetail",
+      "category": "Other",
+      "description": "",
+      "props": [
+        {
+          "name": "theme",
+          "type": "Theme",
+          "optional": true
+        },
+        {
+          "name": "size",
+          "type": "Size",
+          "optional": false
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true
+        },
+        {
+          "name": "margin",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "padding",
+          "type": "Size",
+          "optional": true
+        },
+        {
+          "name": "gap",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "testId",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "fontFamilyGroup",
+          "type": "FontFamilyGroup",
+          "optional": false
+        },
+        {
+          "name": "fontWeight",
+          "type": "FontWeight",
+          "optional": false
+        },
+        {
+          "name": "fontSize",
+          "type": "string | undefined",
+          "optional": true
+        },
+        {
+          "name": "widgetWidth",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "widgetHeight",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "subText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonColor",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonVariant",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonIcon",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "imgUrl",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "imageShape",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "showSubtext",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showImage",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonIcon",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "showButtonTooltip",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "buttonTooltipText",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "disabledButton",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "rowItems",
+          "type": "sectionItem[]",
+          "optional": false
+        }
       ]
     }
   ]
