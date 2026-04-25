@@ -24,6 +24,14 @@ import {
   getTokenValue,
   getTokenValueSchema,
 } from "./tools/brands.js";
+import {
+  suggestComponents,
+  suggestComponentsSchema,
+  validateUsage,
+  validateUsageSchema,
+  getQuickStart,
+  getQuickStartSchema,
+} from "./tools/helpers.js";
 
 const server = new Server(
   {
@@ -79,6 +87,27 @@ const tools = [
       "ดูค่าจริงของ token เช่น '--ssk-font-size-md' = 20px, 'spacing.lg' = 16px",
     inputSchema: zodToJsonSchema(getTokenValueSchema) as object,
     handler: getTokenValue,
+  },
+  {
+    name: "suggest_components",
+    description:
+      "แนะนำ DS 3.0 component จาก use case ที่อธิบาย เช่น 'ผู้ใช้กรอกข้อมูล' → ssk-input, ssk-form...",
+    inputSchema: zodToJsonSchema(suggestComponentsSchema) as object,
+    handler: suggestComponents,
+  },
+  {
+    name: "validate_usage",
+    description:
+      "ตรวจ HTML/JSX snippet ว่าใช้ ssk-* tags + props ถูกต้องไหม รายงาน issue ที่พบ",
+    inputSchema: zodToJsonSchema(validateUsageSchema) as object,
+    handler: validateUsage,
+  },
+  {
+    name: "get_quick_start",
+    description:
+      "Setup guide สำหรับใช้ DS 3.0 ใน React/Vue/Vanilla รวม install, ssk-theme-provider, type declarations",
+    inputSchema: zodToJsonSchema(getQuickStartSchema) as object,
+    handler: getQuickStart,
   },
 ];
 
