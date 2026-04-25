@@ -16,6 +16,14 @@ import {
   getDesignTokens,
   getDesignTokensSchema,
 } from "./tools/tokens.js";
+import {
+  getColorPalette,
+  getColorPaletteSchema,
+  getBrandRules,
+  getBrandRulesSchema,
+  getTokenValue,
+  getTokenValueSchema,
+} from "./tools/brands.js";
 
 const server = new Server(
   {
@@ -50,6 +58,27 @@ const tools = [
       "Get DS 3.0 design tokens — font-size, spacing, radius, semantic tokens, etc.",
     inputSchema: zodToJsonSchema(getDesignTokensSchema) as object,
     handler: getDesignTokens,
+  },
+  {
+    name: "get_color_palette",
+    description:
+      "Get color palette สำหรับแต่ละ brand (patona, ccs3, oc2plus). หรือ 'all' เพื่อดูทุก brand",
+    inputSchema: zodToJsonSchema(getColorPaletteSchema) as object,
+    handler: getColorPalette,
+  },
+  {
+    name: "get_brand_rules",
+    description:
+      "Get usage guidelines + use case ของแต่ละ brand (patona, ccs3, oc2plus)",
+    inputSchema: zodToJsonSchema(getBrandRulesSchema) as object,
+    handler: getBrandRules,
+  },
+  {
+    name: "get_token_value",
+    description:
+      "ดูค่าจริงของ token เช่น '--ssk-font-size-md' = 20px, 'spacing.lg' = 16px",
+    inputSchema: zodToJsonSchema(getTokenValueSchema) as object,
+    handler: getTokenValue,
   },
 ];
 

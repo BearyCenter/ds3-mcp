@@ -1,0 +1,54 @@
+{
+  "version": "3.1.2",
+  "brands": [
+    {
+      "id": "patona",
+      "name": "Patona",
+      "primaryColor": "Aerospace Orange",
+      "primaryHex": "#EC5E2A",
+      "linkColor": "Sky",
+      "successColor": "Emerald",
+      "infoColor": "Sky",
+      "useCase": "Patona product line — เน้นความอบอุ่น พลังงาน",
+      "guidelines": [
+        "ใช้ aerospace-orange เป็น brand primary",
+        "ปุ่ม CTA หลักใช้ variant=solid + themeColor=primary",
+        "Link และ info ใช้ sky color"
+      ]
+    },
+    {
+      "id": "ccs3",
+      "name": "CCS3 (Sellsuki)",
+      "primaryColor": "Sky",
+      "primaryHex": "#32A9FF",
+      "linkColor": "Sky",
+      "successColor": "Emerald",
+      "infoColor": "Sky",
+      "useCase": "Sellsuki main product — สีหลักของ Sellsuki",
+      "guidelines": [
+        "ใช้ sky เป็น brand primary (#32A9FF)",
+        "เป็น default brand เมื่อไม่ระบุ",
+        "ใช้สำหรับ Sellsuki main product, dashboard, admin tools"
+      ]
+    },
+    {
+      "id": "oc2plus",
+      "name": "OC2Plus",
+      "primaryColor": "Emerald",
+      "primaryHex": "#10B981",
+      "linkColor": "Sky",
+      "successColor": "Emerald",
+      "infoColor": "Sky",
+      "useCase": "OC2Plus product line — เน้นความสดใหม่ growth",
+      "guidelines": [
+        "ใช้ emerald เป็น brand primary",
+        "เหมาะกับ context การเงิน, growth, success metrics"
+      ]
+    }
+  ],
+  "usage": {
+    "howToSwitch": "ครอบ component ด้วย <ssk-theme-provider brand=\"patona|ccs3|oc2plus\"> หรือเรียก injectSemanticTokens(brand) ที่ root",
+    "default": "ccs3",
+    "tokenInjection": "ssk-theme-provider จะ inject ทั้ง --ssk-colors-* primitive และ semantic tokens (--bg-brand-primary, --fg-brand-primary, etc.)"
+  }
+}
