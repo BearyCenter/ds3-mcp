@@ -1,6 +1,6 @@
 {
   "name": "@uxuissk/ds3-mcp",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "MCP server for Sellsuki Design System 3.0 — gives AI agents direct access to ssk-* components, tokens, and brand rules",
   "type": "module",
   "main": "dist/server.js",
