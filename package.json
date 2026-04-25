@@ -1,0 +1,44 @@
+{
+  "name": "@uxuissk/ds3-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Sellsuki Design System 3.0 — gives AI agents direct access to ssk-* components, tokens, and brand rules",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "ds3-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
+    "sync": "tsx scripts/sync.ts",
+    "test": "vitest"
+  },
+  "keywords": [
+    "mcp",
+    "design-system",
+    "sellsuki",
+    "ds3",
+    "lit",
+    "web-components"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

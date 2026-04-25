@@ -1,0 +1,91 @@
+{
+  "version": "3.1.2",
+  "lastSync": "2026-04-24",
+  "components": [
+    {
+      "tag": "ssk-button",
+      "category": "Form & Input",
+      "description": "Lit Web Component — primary action button รองรับ variant, size, loading, disabled",
+      "props": [
+        { "name": "variant", "type": "solid | outline | ghost | solid-light", "default": "solid", "desc": "รูปแบบ button" },
+        { "name": "themeColor", "type": "primary | danger | success | warning | info", "default": "primary", "desc": "สี button ตาม theme" },
+        { "name": "size", "type": "xs | sm | md | lg | xl", "default": "md", "desc": "ขนาด" },
+        { "name": "disabled", "type": "boolean", "default": "false", "desc": "ปิดการใช้งาน" },
+        { "name": "loading", "type": "boolean", "default": "false", "desc": "แสดง loading state" },
+        { "name": "testId", "type": "string", "desc": "data-testid สำหรับ testing" }
+      ],
+      "slots": [
+        { "name": "default", "desc": "label ของ button" },
+        { "name": "prefix", "desc": "icon ก่อน label" },
+        { "name": "suffix", "desc": "icon หลัง label" }
+      ],
+      "events": [
+        { "name": "click", "desc": "เมื่อกด button" }
+      ],
+      "examples": [
+        "<ssk-button variant=\"solid\">Save</ssk-button>",
+        "<ssk-button variant=\"outline\" themeColor=\"danger\">Delete</ssk-button>",
+        "<ssk-button size=\"lg\" loading>Loading...</ssk-button>"
+      ]
+    },
+    {
+      "tag": "ssk-input",
+      "category": "Form & Input",
+      "description": "Text input — รองรับ label, placeholder, error, disabled, size",
+      "props": [
+        { "name": "label", "type": "string", "desc": "ข้อความ label" },
+        { "name": "placeholder", "type": "string", "desc": "placeholder text" },
+        { "name": "type", "type": "text | email | password | number", "default": "text", "desc": "ประเภท input" },
+        { "name": "size", "type": "sm | md | lg", "default": "md", "desc": "ขนาด" },
+        { "name": "disabled", "type": "boolean", "default": "false", "desc": "ปิดการใช้งาน" },
+        { "name": "error", "type": "boolean", "default": "false", "desc": "แสดง error state" },
+        { "name": "value", "type": "string", "desc": "ค่าของ input" }
+      ],
+      "events": [
+        { "name": "input", "desc": "เมื่อพิมพ์" },
+        { "name": "change", "desc": "เมื่อ blur" }
+      ],
+      "examples": [
+        "<ssk-input label=\"Email\" placeholder=\"name@example.com\" type=\"email\"></ssk-input>"
+      ]
+    },
+    {
+      "tag": "ssk-badge",
+      "category": "Data Display",
+      "description": "Label สำหรับแสดง status, category หรือ count",
+      "props": [
+        { "name": "color", "type": "default | success | warning | danger | info", "default": "default", "desc": "สีของ badge" },
+        { "name": "size", "type": "sm | md | lg", "default": "md", "desc": "ขนาด" },
+        { "name": "dot", "type": "boolean", "default": "false", "desc": "แสดงเป็น dot เท่านั้น" }
+      ],
+      "examples": [
+        "<ssk-badge color=\"success\">Active</ssk-badge>",
+        "<ssk-badge dot></ssk-badge>"
+      ]
+    },
+    {
+      "tag": "ssk-theme-provider",
+      "category": "Foundation",
+      "description": "ครอบ component ทั้งหมดเพื่อ inject brand tokens — required สำหรับใช้ DS 3.0",
+      "props": [
+        { "name": "brand", "type": "patona | ccs3 | oc2plus", "default": "ccs3", "desc": "brand identity" }
+      ],
+      "examples": [
+        "<ssk-theme-provider brand=\"patona\"><ssk-button>Hello</ssk-button></ssk-theme-provider>"
+      ]
+    },
+    {
+      "tag": "ssk-line-chart",
+      "category": "Charts",
+      "description": "Line chart แบบ zero-dependency SVG",
+      "props": [
+        { "name": "data", "type": "ChartData[]", "desc": "ข้อมูล chart" },
+        { "name": "width", "type": "number", "desc": "ความกว้าง (auto-responsive ถ้าไม่ใส่)" },
+        { "name": "showLegend", "type": "boolean", "default": "true", "desc": "แสดง legend" }
+      ],
+      "examples": [
+        "<ssk-line-chart .data=${chartData} show-legend></ssk-line-chart>"
+      ]
+    }
+  ]
+}
