@@ -10,8 +10,14 @@ MCP server สำหรับ **Sellsuki Design System 3.0** — ให้ AI ag
 
 ### Quick install (recommended)
 
-เพิ่มใน `.mcp.json` ของ project:
+**📖 ดู [SETUP.md](./SETUP.md) สำหรับการติดตั้งทุก AI** (Claude Code, Cursor, Codex, claude.ai, Claude Desktop, ChatGPT, Gemini)
 
+**MCP URL (Streamable HTTP):**
+```
+https://ds3-mcp.vercel.app/api/mcp
+```
+
+**npm (stdio):**
 ```json
 {
   "mcpServers": {
@@ -23,7 +29,10 @@ MCP server สำหรับ **Sellsuki Design System 3.0** — ให้ AI ag
 }
 ```
 
-แล้ว restart Claude Code / Cursor — เสร็จ
+**REST API + OpenAPI:**
+```
+https://ds3-mcp.vercel.app/api/v1/openapi.json
+```
 
 ### Local development
 
