@@ -1,7 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { getColorPalette, getBrandRules } from "../../src/tools/brands.js";
 
-export const config = { runtime: "nodejs" };
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");

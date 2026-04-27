@@ -7,7 +7,6 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { createServer } from "../src/server.js";
 
 export const config = {
-  runtime: "nodejs",
   maxDuration: 30,
 };
 

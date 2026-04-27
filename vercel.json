@@ -4,11 +4,6 @@
   "buildCommand": "npm run sync && npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install --legacy-peer-deps",
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     { "source": "/", "destination": "/api/mcp" }
   ]

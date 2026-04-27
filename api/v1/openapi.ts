@@ -1,6 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 
-export const config = { runtime: "nodejs" };
 
 const openapi = {
   openapi: "3.1.0",
