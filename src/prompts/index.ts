@@ -36,6 +36,23 @@ export const promptsList: Prompt[] = [
     description: "สร้างหน้า marketing landing — hero + features + CTA",
     arguments: [brandArg, { name: "product", description: "ชื่อ product", required: false }],
   },
+  {
+    name: "create_table_view",
+    description: "สร้างหน้า list ที่มี table + filter + pagination",
+    arguments: [
+      brandArg,
+      { name: "entity", description: "ชื่อ entity เช่น 'Order', 'Customer'", required: true },
+      { name: "columns", description: "comma-separated column names", required: false },
+    ],
+  },
+  {
+    name: "create_onboarding_flow",
+    description: "สร้าง multi-step onboarding flow with stepper + progress",
+    arguments: [
+      brandArg,
+      { name: "steps", description: "comma-separated step names", required: false },
+    ],
+  },
 ];
 
 export function getPrompt(name: string, args: Record<string, string> = {}): { messages: { role: "user"; content: { type: "text"; text: string } }[] } {
@@ -65,6 +82,23 @@ export function getPrompt(name: string, args: Record<string, string> = {}): { me
     create_landing_page: () => {
       const product = args.product ?? "Sellsuki";
       return `Create a marketing landing page for "${product}" using DS 3.0 with brand="${brand}".\n\n\`\`\`html\n<ssk-theme-provider brand="${brand}">\n  <ssk-top-navbar>\n    <ssk-logo slot="logo"></ssk-logo>\n    <ssk-button slot="action" variant="solid" themeColor="primary">Sign up</ssk-button>\n  </ssk-top-navbar>\n\n  <section style="padding: var(--ssk-spacing-xl);">\n    <ssk-heading size="xl">${product} — เริ่มต้นใช้งาน</ssk-heading>\n    <ssk-text>คำอธิบายสั้น ๆ เกี่ยวกับ ${product}</ssk-text>\n    <ssk-button variant="solid" themeColor="primary" size="lg">Get started</ssk-button>\n  </section>\n\n  <section>\n    <ssk-widget-grid>\n      <ssk-card>Feature 1</ssk-card>\n      <ssk-card>Feature 2</ssk-card>\n      <ssk-card>Feature 3</ssk-card>\n    </ssk-widget-grid>\n  </section>\n</ssk-theme-provider>\n\`\`\``;
+    },
+
+    create_table_view: () => {
+      const entity = args.entity ?? "Item";
+      const columns = args.columns
+        ? args.columns.split(",").map((c) => c.trim())
+        : ["ID", "Name", "Status", "Created", "Actions"];
+      const colHeader = columns.map((c) => `        <th>${c}</th>`).join("\n");
+      return `Create a table view page for "${entity}" using DS 3.0 with brand="${brand}".\n\nColumns: ${columns.join(", ")}\n\n\`\`\`html\n<ssk-theme-provider brand="${brand}">\n  <ssk-app-shell>\n    <ssk-page-header title="${entity} List">\n      <ssk-button slot="action" variant="solid" themeColor="primary">+ New ${entity}</ssk-button>\n    </ssk-page-header>\n    <ssk-filter-bar>\n      <ssk-input slot="search" placeholder="Search ${entity}..."></ssk-input>\n      <ssk-dropdown slot="filter" label="Status"></ssk-dropdown>\n      <ssk-date-picker slot="filter" label="Date"></ssk-date-picker>\n    </ssk-filter-bar>\n    <ssk-table sortable selectable>\n      <thead>\n        <tr>\n${colHeader}\n        </tr>\n      </thead>\n      <tbody>\n        <!-- rows here -->\n      </tbody>\n    </ssk-table>\n    <ssk-pagination total="100" pageSize="10"></ssk-pagination>\n  </ssk-app-shell>\n</ssk-theme-provider>\n\`\`\``;
+    },
+
+    create_onboarding_flow: () => {
+      const steps = args.steps
+        ? args.steps.split(",").map((s) => s.trim())
+        : ["Welcome", "Profile", "Preferences", "Complete"];
+      const stepItems = steps.map((s, i) => `      <ssk-step label="${s}" ${i === 0 ? "active" : ""}></ssk-step>`).join("\n");
+      return `Create a multi-step onboarding flow with brand="${brand}".\n\nSteps: ${steps.join(" → ")}\n\n\`\`\`html\n<ssk-theme-provider brand="${brand}">\n  <ssk-container>\n    <ssk-stepper>\n${stepItems}\n    </ssk-stepper>\n\n    <ssk-card>\n      <!-- step content here, swap based on current step -->\n      <ssk-heading>${steps[0]}</ssk-heading>\n      <ssk-text>เนื้อหา step 1</ssk-text>\n      <!-- form fields -->\n    </ssk-card>\n\n    <div style="display: flex; justify-content: space-between; margin-top: var(--ssk-spacing-lg);">\n      <ssk-button variant="outline">ย้อนกลับ</ssk-button>\n      <ssk-button variant="solid" themeColor="primary">ถัดไป</ssk-button>\n    </div>\n\n    <ssk-progress-bar value="25" max="100"></ssk-progress-bar>\n  </ssk-container>\n</ssk-theme-provider>\n\`\`\`\n\nValidate each step before allowing next. Use ssk-alert variant="error" for validation errors.`;
     },
   };
 

@@ -1,6 +1,6 @@
 {
   "version": "3.1.2",
-  "lastSync": "2026-04-25",
+  "lastSync": "2026-04-28",
   "total": 91,
   "components": [
     {
@@ -84,7 +84,7 @@
     {
       "tag": "ssk-accordion-item",
       "className": "AccordionItem",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -112,7 +112,7 @@
     {
       "tag": "ssk-addon-phone-country",
       "className": "AddonPhoneCountry",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -155,7 +155,7 @@
     {
       "tag": "ssk-advanced-data-table",
       "className": "AdvancedDataTable",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -955,7 +955,7 @@
     {
       "tag": "ssk-card-group",
       "className": "CardGroup",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -973,7 +973,7 @@
     {
       "tag": "ssk-card-select",
       "className": "CardSelect",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -1139,7 +1139,7 @@
     {
       "tag": "ssk-code-block",
       "className": "CodeBlock",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -1360,7 +1360,7 @@
     {
       "tag": "ssk-country-icon",
       "className": "CountryIcon",
-      "category": "Other",
+      "category": "Foundation",
       "description": "",
       "props": [
         {
@@ -1755,7 +1755,7 @@
     {
       "tag": "ssk-download-file",
       "className": "DownloadFile",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -1876,7 +1876,7 @@
     {
       "tag": "ssk-drawer-header",
       "className": "DrawerHeader",
-      "category": "Other",
+      "category": "Overlay",
       "description": "",
       "props": [
         {
@@ -2067,7 +2067,7 @@
     {
       "tag": "ssk-dropdown-button",
       "className": "DropdownButton",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -2100,7 +2100,7 @@
     {
       "tag": "ssk-dropdown-option",
       "className": "DropdownOption",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -2158,7 +2158,7 @@
     {
       "tag": "ssk-dropdown-preview",
       "className": "DropdownPreview",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -2216,7 +2216,7 @@
     {
       "tag": "ssk-dynamic-table",
       "className": "DynamicTable",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -2274,7 +2274,7 @@
     {
       "tag": "ssk-expandable-card",
       "className": "ExpandableCard",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -2367,7 +2367,7 @@
     {
       "tag": "ssk-feature-page-scaffold",
       "className": "FeaturePageScaffold",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -2390,7 +2390,7 @@
     {
       "tag": "ssk-filter-bar",
       "className": "FilterBar",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -2428,7 +2428,7 @@
     {
       "tag": "ssk-header-cell",
       "className": "HeaderCell",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -2645,7 +2645,7 @@
     {
       "tag": "ssk-image_2",
       "className": "Image_2",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -2803,7 +2803,7 @@
     {
       "tag": "ssk-image-cropper",
       "className": "ImageCropper",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -2969,7 +2969,7 @@
     {
       "tag": "ssk-input-addon",
       "className": "InputAddon",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -3057,7 +3057,7 @@
     {
       "tag": "ssk-input-range",
       "className": "InputRange",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -3185,7 +3185,7 @@
     {
       "tag": "ssk-inputtag",
       "className": "Inputtag",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -3444,7 +3444,7 @@
     {
       "tag": "ssk-menu-group",
       "className": "MenuGroup",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -3547,7 +3547,7 @@
     {
       "tag": "ssk-menu-items",
       "className": "MenuItems",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -3655,7 +3655,7 @@
     {
       "tag": "ssk-misc-icon",
       "className": "MiscIcon",
-      "category": "Other",
+      "category": "Foundation",
       "description": "",
       "props": [
         {
@@ -3769,7 +3769,7 @@
     {
       "tag": "ssk-pagination",
       "className": "Pagination",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -4166,7 +4166,7 @@
     {
       "tag": "ssk-radio-group",
       "className": "RadioGroup",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -4269,7 +4269,7 @@
     {
       "tag": "ssk-range-date-picker",
       "className": "RangeDatePicker",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -4460,7 +4460,7 @@
     {
       "tag": "ssk-sidebar-account-switcher",
       "className": "SidebarAccountSwitcher",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4488,7 +4488,7 @@
     {
       "tag": "ssk-sidebar-group",
       "className": "SidebarGroup",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4516,7 +4516,7 @@
     {
       "tag": "ssk-sidebar-header",
       "className": "SidebarHeader",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4534,7 +4534,7 @@
     {
       "tag": "ssk-sidebar-items",
       "className": "SidebarItems",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4567,7 +4567,7 @@
     {
       "tag": "ssk-sidebar-list",
       "className": "SidebarList",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4754,7 +4754,7 @@
     {
       "tag": "ssk-tab-button",
       "className": "TabButton",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4797,7 +4797,7 @@
     {
       "tag": "ssk-tab-header",
       "className": "TabHeader",
-      "category": "Other",
+      "category": "Navigation",
       "description": "",
       "props": [
         {
@@ -4998,7 +4998,7 @@
     {
       "tag": "ssk-table-cell",
       "className": "TableCell",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -5016,7 +5016,7 @@
     {
       "tag": "ssk-table-row",
       "className": "TableRow",
-      "category": "Other",
+      "category": "Data Display",
       "description": "",
       "props": [
         {
@@ -5235,7 +5235,7 @@
     {
       "tag": "ssk-template",
       "className": "Template",
-      "category": "Other",
+      "category": "Typography",
       "description": "",
       "props": [
         {
@@ -5268,7 +5268,7 @@
     {
       "tag": "ssk-text_2",
       "className": "Text_2",
-      "category": "Other",
+      "category": "Typography",
       "description": "",
       "props": [
         {
@@ -5502,7 +5502,7 @@
     {
       "tag": "ssk-time",
       "className": "Time",
-      "category": "Other",
+      "category": "Form & Input",
       "description": "",
       "props": [
         {
@@ -5890,7 +5890,7 @@
     {
       "tag": "ssk-translate",
       "className": "Translate",
-      "category": "Other",
+      "category": "Typography",
       "description": "",
       "props": [
         {
@@ -5918,7 +5918,7 @@
     {
       "tag": "ssk-wave-icon",
       "className": "WaveIcon",
-      "category": "Other",
+      "category": "Foundation",
       "description": "",
       "props": [
         {
@@ -5961,7 +5961,7 @@
     {
       "tag": "ssk-widget-example",
       "className": "WidgetExample",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -6029,7 +6029,7 @@
     {
       "tag": "ssk-widget-grid",
       "className": "WidgetGrid",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -6067,7 +6067,7 @@
     {
       "tag": "ssk-widget-matric",
       "className": "WidgetMatric",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -6230,7 +6230,7 @@
     {
       "tag": "ssk-widget-table",
       "className": "WidgetTable",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -6398,7 +6398,7 @@
     {
       "tag": "ssk-widget-title",
       "className": "WidgetTitle",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {
@@ -6521,7 +6521,7 @@
     {
       "tag": "ssk-widget-user-detail",
       "className": "WidgetUserDetail",
-      "category": "Other",
+      "category": "Layout",
       "description": "",
       "props": [
         {

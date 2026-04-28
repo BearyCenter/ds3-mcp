@@ -85,6 +85,66 @@ function categoryFor(className: string): string {
     Logo: "Foundation",
     Heading: "Typography",
     Text: "Typography",
+    Text_2: "Typography",
+    Translate: "Typography",
+    Template: "Typography",
+
+    // Form & Input sub-components
+    Inputtag: "Form & Input",
+    InputRange: "Form & Input",
+    InputAddon: "Form & Input",
+    AddonPhoneCountry: "Form & Input",
+    RadioGroup: "Form & Input",
+    RangeDatePicker: "Form & Input",
+    Time: "Form & Input",
+    DropdownButton: "Form & Input",
+    DropdownOption: "Form & Input",
+    DropdownPreview: "Form & Input",
+    CardSelect: "Form & Input",
+    CardGroup: "Form & Input",
+    DownloadFile: "Form & Input",
+    ImageCropper: "Form & Input",
+
+    // Data Display sub-components
+    AdvancedDataTable: "Data Display",
+    DynamicTable: "Data Display",
+    TableCell: "Data Display",
+    TableRow: "Data Display",
+    HeaderCell: "Data Display",
+    Pagination: "Data Display",
+    ExpandableCard: "Data Display",
+    Image_2: "Data Display",
+    CodeBlock: "Data Display",
+
+    // Navigation sub-components
+    AccordionItem: "Navigation",
+    MenuGroup: "Navigation",
+    MenuItems: "Navigation",
+    TabButton: "Navigation",
+    TabHeader: "Navigation",
+    SidebarGroup: "Navigation",
+    SidebarItems: "Navigation",
+    SidebarList: "Navigation",
+    SidebarHeader: "Navigation",
+    SidebarAccountSwitcher: "Navigation",
+    FilterBar: "Navigation",
+
+    // Overlay sub-components
+    DrawerHeader: "Overlay",
+
+    // Layout sub-components
+    FeaturePageScaffold: "Layout",
+    WidgetGrid: "Layout",
+    WidgetExample: "Layout",
+    WidgetMatric: "Layout",
+    WidgetTable: "Layout",
+    WidgetTitle: "Layout",
+    WidgetUserDetail: "Layout",
+
+    // Foundation sub-components
+    CountryIcon: "Foundation",
+    MiscIcon: "Foundation",
+    WaveIcon: "Foundation",
   };
   return map[className] ?? "Other";
 }
