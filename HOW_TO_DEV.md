@@ -84,6 +84,14 @@ AI: ใช้ validate_usage →
 - ⚠ onClick ไม่ใช่ standard prop ของ Lit → ใช้ @click หรือ addEventListener
 ```
 
+```
+You: "validate code นี้: <p class="text-xs text-gray-400">hint</p>"
+
+AI: ใช้ validate_usage →
+- ❌ font-size-violation: 'text-xs' produces 12px — below DS 3.0 minimum 18px
+  Fix: Use var(--font-size-caption, 18px) or <ssk-text> component
+```
+
 ### 3. ดู API ของ component
 
 ```
@@ -105,13 +113,41 @@ AI: ตาม spec DS 3.0 →
 
 ## Best Practices
 
-### ใช้ token ไม่ hardcode
-```ts
-// ❌ wrong
-:host { color: #32A9FF; padding: 16px; }
+### Font Size Rules (STRICT)
 
-// ✅ right
-:host { color: var(--fg-brand-primary); padding: var(--ssk-spacing-lg); }
+| Rule | Detail |
+|------|--------|
+| Minimum 18px | `var(--font-size-caption, 18px)` เป็น minimum สำหรับทุก text |
+| Token เท่านั้น | ห้าม hardcode px — ใช้ `var(--font-size-*)` เสมอ |
+| ห้าม Tailwind size | `text-xs` (12px), `text-sm` (14px) ห้ามใช้ |
+
+```css
+/* ✅ CORRECT */
+font-size: var(--font-size-caption, 18px);  /* minimum */
+font-size: var(--font-size-p, 20px);        /* body */
+font-size: var(--font-size-label, 20px);    /* label */
+font-size: var(--font-size-h4, 24px);       /* sub-heading */
+font-size: var(--font-size-h3, 28px);       /* heading */
+
+/* ❌ FORBIDDEN */
+font-size: 12px;         /* below minimum */
+font-size: 14px;         /* below minimum */
+class="text-xs"          /* Tailwind 12px */
+class="text-sm"          /* Tailwind 14px */
+```
+
+### ใช้ token ไม่ hardcode
+```css
+/* ❌ wrong */
+:host { color: #32A9FF; padding: 16px; border-radius: 8px; }
+
+/* ✅ right */
+:host {
+  color: var(--fg-brand-primary);
+  padding: 16px;                        /* spacing ใช้ px ได้ — ไม่มี spacing token inject */
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-p, 20px);
+}
 ```
 
 ### Wrap ด้วย ssk-theme-provider เสมอ

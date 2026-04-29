@@ -71,6 +71,7 @@ ${formBody}
       "ใช้ ssk-card เป็น container",
       "ssk-button variant='solid' เป็น primary CTA",
     ],
+    fontRule: "Minimum font size = 18px. Use var(--font-size-caption, 18px) for helper text. Never use text-xs/text-sm or font-size < 18px.",
   };
 }
 
@@ -116,9 +117,10 @@ ${shellClose}
     pageType,
     code,
     nextSteps: [
-      `เรียก get_component สำหรับแต่ละ tag เพื่อดู props จริง`,
-      `เติม data, event handler ตาม use case`,
-      `ใช้ token --ssk-spacing-* สำหรับ custom CSS`,
+      "เรียก get_component สำหรับแต่ละ tag เพื่อดู props จริง",
+      "เติม data, event handler ตาม use case",
+      "ใช้ semantic tokens สำหรับ custom CSS: var(--text-primary), var(--bg-primary), var(--stroke-primary), var(--font-size-p)",
     ],
+    fontRule: "Minimum font size = 18px. Use var(--font-size-caption, 18px) minimum. Never use text-xs/text-sm or hardcode font-size < 18px.",
   };
 }

@@ -47,9 +47,9 @@
 
 ### 3. เลือก token ที่ถูก
 
-**คุณ:** "spacing 16px ใช้ token อะไร"
+**คุณ:** "font size สำหรับ body text ใช้ token อะไร"
 
-**AI:** เรียก `get_token_value` → `--ssk-spacing-lg`
+**AI:** เรียก `get_design_tokens` → `var(--font-size-p, 20px)` — minimum คือ `var(--font-size-caption, 18px)`
 
 ### 4. Multi-brand preview
 
@@ -96,6 +96,20 @@ Claude/Figma Make + ds3-mcp
 - "brand=patona" — สำหรับ Patona product
 - "brand=ccs3" — Sellsuki main
 - "brand=oc2plus" — OC2Plus
+
+### Font size compliance (สำคัญ)
+
+DS 3.0 กำหนด minimum font size = **18px** — ห้าม AI generate ต่ำกว่านี้
+
+| ❌ ห้ามใช้ | ✅ ใช้แทน |
+|-----------|---------|
+| `text-xs` (12px) | `var(--font-size-caption, 18px)` |
+| `text-sm` (14px) | `var(--font-size-caption, 18px)` |
+| `font-size: 13px` | `var(--font-size-caption, 18px)` |
+| body text ไม่มี token | `var(--font-size-p, 20px)` |
+
+ถาม AI ตรงๆ ได้:
+> "validate font size ใน prototype นี้ ให้ตรวจว่าต่ำกว่า 18px ไหม"
 
 ### Validate token usage
 > "Code นี้ hardcode สี #32A9FF — ควรใช้ token อะไรแทน"
