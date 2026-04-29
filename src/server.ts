@@ -44,10 +44,14 @@ import {
 } from "./tools/generate.js";
 import { listResources, readResource } from "./resources/index.js";
 import { promptsList, getPrompt } from "./prompts/index.js";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json") as { version: string };
 
 export function createServer() {
   const server = new Server(
-    { name: "ds3-mcp", version: "1.0.0" },
+    { name: "ds3-mcp", version },
     {
       capabilities: {
         tools: {},
