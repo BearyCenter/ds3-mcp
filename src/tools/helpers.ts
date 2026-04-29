@@ -106,6 +106,47 @@ export const validateUsageSchema = z.object({
   code: z.string().describe("HTML/JSX snippet ที่ใช้ ssk-* tags"),
 });
 
+// Tailwind classes that produce sub-18px font sizes — forbidden in DS 3.0
+const FORBIDDEN_TAILWIND_SIZE_CLASSES = ["text-xs", "text-sm"];
+
+// Regex to catch inline font-size values below 18px
+const INLINE_FONT_SIZE_PATTERN = /font-size\s*:\s*(\d+(?:\.\d+)?)(px|rem)/gi;
+
+function checkFontViolations(code: string): Array<{ tag: string; type: string; message: string }> {
+  const fontIssues: Array<{ tag: string; type: string; message: string }> = [];
+
+  // Check forbidden Tailwind class names
+  for (const cls of FORBIDDEN_TAILWIND_SIZE_CLASSES) {
+    const pattern = new RegExp(`\\b${cls}\\b`, "g");
+    if (pattern.test(code)) {
+      const sizeMap: Record<string, string> = { "text-xs": "12px", "text-sm": "14px" };
+      fontIssues.push({
+        tag: cls,
+        type: "font-size-violation",
+        message: `Tailwind class '${cls}' produces ${sizeMap[cls]} — below DS 3.0 minimum 18px. Use var(--font-size-caption, 18px) or ssk-text component instead.`,
+      });
+    }
+  }
+
+  // Check inline font-size values below 18px
+  let fMatch: RegExpExecArray | null;
+  INLINE_FONT_SIZE_PATTERN.lastIndex = 0;
+  while ((fMatch = INLINE_FONT_SIZE_PATTERN.exec(code)) !== null) {
+    const value = parseFloat(fMatch[1]);
+    const unit = fMatch[2];
+    const px = unit === "rem" ? value * 16 : value;
+    if (px < 18) {
+      fontIssues.push({
+        tag: "font-size",
+        type: "font-size-violation",
+        message: `Hardcoded font-size: ${fMatch[1]}${unit} (${px}px) — below DS 3.0 minimum 18px. Use var(--font-size-caption, 18px) as minimum.`,
+      });
+    }
+  }
+
+  return fontIssues;
+}
+
 export function validateUsage(input: z.infer<typeof validateUsageSchema>) {
   const { code } = input;
   const issues: Array<{ tag: string; type: string; message: string }> = [];
@@ -146,7 +187,6 @@ export function validateUsage(input: z.infer<typeof validateUsageSchema>) {
     let attrMatch: RegExpExecArray | null;
     while ((attrMatch = attrPattern.exec(attrsRaw)) !== null) {
       const attr = attrMatch[1].toLowerCase();
-      // skip standard html attrs and event handlers
       if (
         attr.startsWith("on") ||
         attr.startsWith("data-") ||
@@ -163,11 +203,19 @@ export function validateUsage(input: z.infer<typeof validateUsageSchema>) {
     }
   }
 
+  // 4. ตรวจ font size violations
+  issues.push(...checkFontViolations(code));
+
+  const fontViolations = issues.filter((i) => i.type === "font-size-violation");
+
   return {
     valid: issues.length === 0,
     foundTags: Array.from(foundTags),
     issuesCount: issues.length,
     issues,
+    ...(fontViolations.length > 0 && {
+      fontRule: "DS 3.0 minimum font size = 18px (--font-size-caption). Never use text-xs, text-sm, or hardcoded px below 18.",
+    }),
   };
 }
 
@@ -223,6 +271,28 @@ export function getQuickStart(input: z.infer<typeof getQuickStartSchema>) {
 </ssk-theme-provider>`,
     },
     note: "ssk-theme-provider จำเป็น — ครอบที่ root ของแอปเสมอเพื่อ inject brand tokens",
+    fontRules: {
+      title: "Font Size Rules (STRICT)",
+      minimum: "18px — var(--font-size-caption, 18px)",
+      tokens: {
+        "var(--font-size-caption, 18px)": "caption / helper text (minimum)",
+        "var(--font-size-p, 20px)": "body text",
+        "var(--font-size-label, 20px)": "form labels",
+        "var(--font-size-h4, 24px)": "sub-heading",
+        "var(--font-size-h3, 28px)": "heading",
+        "var(--font-size-h2, 36px)": "section title",
+        "var(--font-size-h1, 44px)": "page title",
+      },
+      forbidden: [
+        "text-xs (Tailwind 12px)",
+        "text-sm (Tailwind 14px)",
+        "font-size: 12px",
+        "font-size: 14px",
+        "font-size: 16px",
+        "fontSize: '13px'",
+      ],
+      use_instead: "Always use ssk-text or ssk-heading components, or var(--font-size-*) tokens",
+    },
   };
 
   if (framework === "all") return guides;

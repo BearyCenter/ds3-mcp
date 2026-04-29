@@ -65,8 +65,8 @@ export function createServer() {
     { name: "get_brand_rules", description: "Get usage guidelines + use case for each brand (patona, ccs3, oc2plus)", inputSchema: zodToJsonSchema(getBrandRulesSchema) as object, handler: getBrandRules },
     { name: "get_token_value", description: "Lookup actual value of a token e.g. '--ssk-font-size-md' = 20px", inputSchema: zodToJsonSchema(getTokenValueSchema) as object, handler: getTokenValue },
     { name: "suggest_components", description: "Suggest DS 3.0 components based on a use case description", inputSchema: zodToJsonSchema(suggestComponentsSchema) as object, handler: suggestComponents },
-    { name: "validate_usage", description: "Validate HTML/JSX snippet uses ssk-* tags + props correctly", inputSchema: zodToJsonSchema(validateUsageSchema) as object, handler: validateUsage },
-    { name: "get_quick_start", description: "Setup guide for using DS 3.0 in React/Vue/Vanilla", inputSchema: zodToJsonSchema(getQuickStartSchema) as object, handler: getQuickStart },
+    { name: "validate_usage", description: "Validate HTML/JSX snippet uses ssk-* tags + props correctly. Also checks font-size violations (minimum 18px, no text-xs/text-sm Tailwind classes).", inputSchema: zodToJsonSchema(validateUsageSchema) as object, handler: validateUsage },
+    { name: "get_quick_start", description: "Setup guide for using DS 3.0 in React/Vue/Vanilla. Includes font size rules: minimum 18px, token-only, no Tailwind text-xs/text-sm.", inputSchema: zodToJsonSchema(getQuickStartSchema) as object, handler: getQuickStart },
     { name: "generate_form", description: "Generate a complete form using ssk-* components from field specs", inputSchema: zodToJsonSchema(generateFormSchema) as object, handler: generateForm },
     { name: "generate_page_layout", description: "Generate a page layout boilerplate (dashboard, list, detail, settings, landing)", inputSchema: zodToJsonSchema(generatePageLayoutSchema) as object, handler: generatePageLayout },
   ];
