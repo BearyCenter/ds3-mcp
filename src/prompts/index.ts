@@ -53,7 +53,75 @@ export const promptsList: Prompt[] = [
       { name: "steps", description: "comma-separated step names", required: false },
     ],
   },
+  // ── Phase 5: Product Feature Templates (AppShell-based) ──────────────────
+  {
+    name: "create_feature_page",
+    description: "สร้าง feature page พร้อม AppShell + Sidebar + PageHeader — starting point สำหรับ feature ใหม่ใน Sellsuki product",
+    arguments: [
+      brandArg,
+      { name: "featureName", description: "ชื่อ feature เช่น 'Order Management', 'Customer Profile'", required: true },
+      { name: "ctaLabel",    description: "ข้อความ primary action button เช่น '+ New Order'", required: false },
+    ],
+  },
+  {
+    name: "create_product_list",
+    description: "สร้างหน้า list ของ entity ใน Sellsuki product พร้อม AppShell + filter + table + pagination",
+    arguments: [
+      brandArg,
+      { name: "entity",   description: "ชื่อ entity เช่น 'Product', 'Order', 'Customer'", required: true },
+      { name: "columns",  description: "comma-separated column names", required: false },
+    ],
+  },
+  {
+    name: "create_product_form",
+    description: "สร้างหน้า create/edit form สำหรับ entity ใน Sellsuki product พร้อม AppShell + validation",
+    arguments: [
+      brandArg,
+      { name: "entity",      description: "ชื่อ entity เช่น 'Product', 'Order'", required: true },
+      { name: "fields",      description: "comma-separated field names", required: false },
+      { name: "submitLabel", description: "label ของ submit button", required: false },
+    ],
+  },
+  {
+    name: "create_analytics_widget",
+    description: "สร้างหน้า analytics/dashboard สำหรับ Sellsuki product พร้อม AppShell + widget + chart",
+    arguments: [
+      brandArg,
+      { name: "metrics",   description: "comma-separated metric names เช่น 'Sales,Orders,Customers'", required: false },
+      { name: "chartType", description: "line | bar | donut (default line)", required: false },
+    ],
+  },
 ];
+
+// ─── Shared AppShell base (Phase 5 product templates) ────────────────────────
+
+const APPSHELL_RULES = `
+## AppShell Structure (REQUIRED for all Sellsuki product features)
+
+\`\`\`html
+<!-- ✅ Correct: ssk-app-shell-provider wraps everything -->
+<ssk-app-shell-provider brand="ccs3">
+  <ssk-app-shell>
+    <ssk-sidebar slot="sidebar">
+      <!-- navigation items -->
+    </ssk-sidebar>
+    <main>
+      <!-- page content -->
+    </main>
+  </ssk-app-shell>
+</ssk-app-shell-provider>
+\`\`\`
+
+### Brand values
+- **ccs3** = Sellsuki (default — ใช้เมื่อไม่ระบุ)
+- **patona** = Patona product
+- **oc2plus** = OC2Plus product
+
+### AppShell injects all tokens automatically
+- ไม่ต้อง import CSS แยก
+- ไม่ต้องตั้ง font-family เอง — DB HeaventRounded โหลดให้อัตโนมัติ
+- สี, token, radius ทั้งหมดพร้อมใช้ผ่าน var(--token-name)
+`;
 
 // ─── Shared rules appended to every template ─────────────────────────────────
 
@@ -323,6 +391,240 @@ ${stepItems}
 
 Validate each step before allowing next. Use ssk-alert themeColor="danger" for validation errors.
 ${FONT_RULES}`;
+    },
+
+    // ── Phase 5: Product Feature Templates ───────────────────────────────────
+
+    create_feature_page: () => {
+      const featureName = args.featureName ?? "Feature Name";
+      const ctaLabel = args.ctaLabel ?? `+ New ${featureName}`;
+      return `Create a new Sellsuki product feature page for "${featureName}" with brand="${brand}".
+
+This is the standard starting structure for ALL Sellsuki product features.
+
+\`\`\`html
+<ssk-app-shell-provider brand="${brand}">
+  <ssk-app-shell>
+
+    <!-- Sidebar navigation -->
+    <ssk-sidebar slot="sidebar">
+      <ssk-logo slot="logo"></ssk-logo>
+      <ssk-sidebar-group>
+        <ssk-sidebar-items label="${featureName}" active></ssk-sidebar-items>
+        <!-- add more navigation items here -->
+      </ssk-sidebar-group>
+    </ssk-sidebar>
+
+    <!-- Main content -->
+    <main>
+      <ssk-page-header title="${featureName}">
+        <ssk-button slot="action" variant="solid" themeColor="primary">
+          ${ctaLabel}
+        </ssk-button>
+      </ssk-page-header>
+
+      <!-- Feature content goes here -->
+      <div style="padding: 24px;">
+        <ssk-text>เนื้อหา ${featureName}</ssk-text>
+      </div>
+    </main>
+
+  </ssk-app-shell>
+</ssk-app-shell-provider>
+\`\`\`
+${APPSHELL_RULES}${FONT_RULES}`;
+    },
+
+    create_product_list: () => {
+      const entity = args.entity ?? "Item";
+      const columns = args.columns
+        ? args.columns.split(",").map((c) => c.trim())
+        : ["ID", "Name", "Status", "Date", "Actions"];
+      const colHeaders = columns.map((c) => `              <th>${c}</th>`).join("\n");
+      return `Create a product list page for "${entity}" in Sellsuki with brand="${brand}".
+
+\`\`\`html
+<ssk-app-shell-provider brand="${brand}">
+  <ssk-app-shell>
+
+    <ssk-sidebar slot="sidebar">
+      <ssk-logo slot="logo"></ssk-logo>
+      <ssk-sidebar-group>
+        <ssk-sidebar-items label="${entity} List" active></ssk-sidebar-items>
+      </ssk-sidebar-group>
+    </ssk-sidebar>
+
+    <main>
+      <ssk-page-header title="${entity} List">
+        <ssk-button slot="action" variant="solid" themeColor="primary">
+          + New ${entity}
+        </ssk-button>
+      </ssk-page-header>
+
+      <!-- Filter bar -->
+      <ssk-filter-bar>
+        <ssk-input slot="search" placeholder="Search ${entity}..."></ssk-input>
+        <ssk-dropdown slot="filter" label="Status"></ssk-dropdown>
+        <ssk-date-picker slot="filter" label="Date"></ssk-date-picker>
+      </ssk-filter-bar>
+
+      <!-- Data table -->
+      <ssk-table sortable selectable>
+        <thead>
+          <tr>
+${colHeaders}
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows — populate with real data -->
+        </tbody>
+      </ssk-table>
+
+      <!-- Pagination -->
+      <ssk-pagination total="100" pageSize="20"></ssk-pagination>
+    </main>
+
+  </ssk-app-shell>
+</ssk-app-shell-provider>
+\`\`\`
+${APPSHELL_RULES}${FONT_RULES}`;
+    },
+
+    create_product_form: () => {
+      const entity = args.entity ?? "Item";
+      const fields = args.fields
+        ? args.fields.split(",").map((f) => f.trim())
+        : ["Name", "Description", "Status", "Date"];
+      const submitLabel = args.submitLabel ?? `Save ${entity}`;
+      const formFields = fields.map((f) => {
+        if (f.toLowerCase().includes("status")) {
+          return `        <ssk-dropdown label="${f}" required></ssk-dropdown>`;
+        }
+        if (f.toLowerCase().includes("date")) {
+          return `        <ssk-date-picker label="${f}"></ssk-date-picker>`;
+        }
+        if (f.toLowerCase().includes("description") || f.toLowerCase().includes("note")) {
+          return `        <ssk-textarea label="${f}" placeholder="${f}..."></ssk-textarea>`;
+        }
+        return `        <ssk-input label="${f}" placeholder="${f}" required></ssk-input>`;
+      }).join("\n");
+      return `Create a product form page for "${entity}" in Sellsuki with brand="${brand}".
+
+\`\`\`html
+<ssk-app-shell-provider brand="${brand}">
+  <ssk-app-shell>
+
+    <ssk-sidebar slot="sidebar">
+      <ssk-logo slot="logo"></ssk-logo>
+      <ssk-sidebar-group>
+        <ssk-sidebar-items label="${entity}"></ssk-sidebar-items>
+      </ssk-sidebar-group>
+    </ssk-sidebar>
+
+    <main>
+      <ssk-page-header title="Create ${entity}">
+        <ssk-button slot="action" variant="outline">Cancel</ssk-button>
+      </ssk-page-header>
+
+      <!-- Validation error alert -->
+      <ssk-alert themeColor="danger" hidden id="error-alert">
+        กรุณากรอกข้อมูลให้ครบถ้วน
+      </ssk-alert>
+
+      <!-- Form card -->
+      <ssk-card>
+        <ssk-heading slot="header">ข้อมูล ${entity}</ssk-heading>
+        <form id="${entity.toLowerCase()}-form"
+              style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
+${formFields}
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px;">
+            <ssk-button variant="outline" type="button">Cancel</ssk-button>
+            <ssk-button variant="solid" themeColor="primary" type="submit">
+              ${submitLabel}
+            </ssk-button>
+          </div>
+        </form>
+      </ssk-card>
+    </main>
+
+  </ssk-app-shell>
+</ssk-app-shell-provider>
+\`\`\`
+${APPSHELL_RULES}${FONT_RULES}`;
+    },
+
+    create_analytics_widget: () => {
+      const metrics = args.metrics
+        ? args.metrics.split(",").map((m) => m.trim())
+        : ["Sales", "Orders", "Customers"];
+      const chartType = args.chartType ?? "line";
+      const chartTag = chartType === "bar" ? "ssk-bar-chart" : chartType === "donut" ? "ssk-donut-chart" : "ssk-line-chart";
+      const metricWidgets = metrics.map((m) => `        <ssk-widget-matric label="${m}" subText="vs last period"></ssk-widget-matric>`).join("\n");
+      return `Create an analytics dashboard for Sellsuki product with brand="${brand}".
+
+Metrics: ${metrics.join(", ")} — Chart: ${chartType}
+
+\`\`\`html
+<ssk-app-shell-provider brand="${brand}">
+  <ssk-app-shell>
+
+    <ssk-sidebar slot="sidebar">
+      <ssk-logo slot="logo"></ssk-logo>
+      <ssk-sidebar-group>
+        <ssk-sidebar-items label="Analytics" active></ssk-sidebar-items>
+        <ssk-sidebar-items label="Reports"></ssk-sidebar-items>
+      </ssk-sidebar-group>
+    </ssk-sidebar>
+
+    <main>
+      <ssk-page-header title="Analytics">
+        <ssk-button slot="action" variant="outline">Export</ssk-button>
+      </ssk-page-header>
+
+      <!-- Date filter -->
+      <ssk-filter-bar>
+        <ssk-date-picker slot="filter" label="Period" range></ssk-date-picker>
+        <ssk-dropdown slot="filter" label="Compare"></ssk-dropdown>
+      </ssk-filter-bar>
+
+      <!-- Metric widgets -->
+      <ssk-widget-grid>
+${metricWidgets}
+      </ssk-widget-grid>
+
+      <!-- Chart -->
+      <ssk-card style="margin-top: 24px;">
+        <ssk-heading slot="header">${metrics[0]} Trend</ssk-heading>
+        <${chartTag}
+          labels='["Jan","Feb","Mar","Apr","May","Jun"]'
+          datasets='[{"label":"${metrics[0]}","data":[0,0,0,0,0,0]}]'>
+        </${chartTag}>
+      </ssk-card>
+
+      <!-- Breakdown table -->
+      <ssk-card style="margin-top: 24px;">
+        <ssk-heading slot="header">Breakdown</ssk-heading>
+        <ssk-table sortable>
+          <thead>
+            <tr>
+              <th>Period</th>
+              ${metrics.map((m) => `<th>${m}</th>`).join("")}
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- populate with real data -->
+          </tbody>
+        </ssk-table>
+      </ssk-card>
+    </main>
+
+  </ssk-app-shell>
+</ssk-app-shell-provider>
+\`\`\`
+
+Use get_component for ssk-widget-matric, ${chartTag} to fill actual props.
+${APPSHELL_RULES}${FONT_RULES}`;
     },
   };
 
