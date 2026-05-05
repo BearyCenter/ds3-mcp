@@ -5,6 +5,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { createServer } from "../src/server.js";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json") as { version: string };
 
 export const config = {
   maxDuration: 30,
@@ -31,7 +35,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
       JSON.stringify({
         status: "ok",
         server: "ds3-mcp",
-        version: "1.0.0",
+        version,
         transport: "streamable-http",
         capabilities: ["tools", "resources", "prompts"],
         documentation: "https://github.com/BearyCenter/ds3-mcp",
