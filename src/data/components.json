@@ -552,41 +552,34 @@
       "tag": "ssk-button",
       "className": "Button",
       "category": "Form & Input",
-      "description": "",
+      "description": "DS 3.0 button — combine `variant` + `tone` for semantic intent. Legacy props (themeColor, backgroundColor, fontSize, etc.) are deprecated and will be removed in DS 3.4.0.",
       "props": [
         {
-          "name": "theme",
-          "type": "Theme",
-          "optional": true
+          "name": "variant",
+          "type": "\"solid\" | \"outline\" | \"ghost\" | \"solid-light\"",
+          "optional": false,
+          "description": "Visual variant. Default: \"solid\"."
         },
         {
-          "name": "testId",
-          "type": "string",
-          "optional": true
-        },
-        {
-          "name": "themeColor",
-          "type": "ColorRole | ColorName",
-          "optional": false
-        },
-        {
-          "name": "color",
-          "type": "ColorRole | ColorName",
-          "optional": true
-        },
-        {
-          "name": "backgroundColor",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
-          "name": "borderColor",
-          "type": "string | undefined",
-          "optional": true
+          "name": "tone",
+          "type": "\"brand\" | \"danger\" | \"success\" | \"warning\" | \"info\"",
+          "optional": true,
+          "description": "Semantic intent (DS 3.0). Default: \"brand\". Replaces legacy themeColor."
         },
         {
           "name": "size",
           "type": "Size",
+          "optional": false,
+          "description": "\"sm\" | \"md\" | \"lg\". Default: \"md\"."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "optional": false
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
           "optional": false
         },
         {
@@ -595,28 +588,19 @@
           "optional": true
         },
         {
-          "name": "fontSize",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
-          "name": "lineHeight",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
           "name": "gap",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "rounded",
-          "type": "string | undefined",
-          "optional": true
+          "type": "string",
+          "optional": true,
+          "description": "Override radius token, e.g. \"md\" or \"full\"."
         },
         {
           "name": "margin",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
@@ -630,64 +614,108 @@
           "optional": false
         },
         {
-          "name": "borderWidth",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
-          "name": "boxShadow",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
-          "name": "dropShadow",
-          "type": "string | undefined",
-          "optional": true
-        },
-        {
           "name": "width",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "height",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "minWidth",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "minHeight",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "maxWidth",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
           "name": "maxHeight",
-          "type": "string | undefined",
+          "type": "string",
           "optional": true
         },
         {
-          "name": "variant",
-          "type": "ButtonVariants",
-          "optional": false
+          "name": "theme",
+          "type": "Theme",
+          "optional": true,
+          "description": "Theme context override (rare — usually injected by ssk-app-shell-provider)."
         },
         {
-          "name": "disabled",
-          "type": "boolean",
-          "optional": false
+          "name": "testId",
+          "type": "string",
+          "optional": true
         },
         {
-          "name": "hidden",
-          "type": "boolean",
-          "optional": false
+          "name": "themeColor",
+          "type": "ColorRole | ColorName",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — use `tone` instead. Will be removed in DS 3.4.0. Migration: themeColor=\"primary\" → tone=\"brand\", themeColor=\"error\" → tone=\"danger\"."
+        },
+        {
+          "name": "color",
+          "type": "ColorRole | ColorName",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — use `tone`. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — bypasses semantic tokens. Use variant + tone. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "borderColor",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — use variant=\"outline\" + tone. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "fontSize",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — bound to `size` (token-driven). Below 18px violates DS 3.0 minimum. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "lineHeight",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — bound to `size`. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "borderWidth",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — bound to `variant`. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "boxShadow",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — use elevation tokens via theme.components.button. Will be removed in DS 3.4.0."
+        },
+        {
+          "name": "dropShadow",
+          "type": "string",
+          "optional": true,
+          "deprecated": true,
+          "description": "DEPRECATED — use elevation tokens. Will be removed in DS 3.4.0."
         }
       ]
     },

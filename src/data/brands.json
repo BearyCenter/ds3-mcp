@@ -12,7 +12,7 @@
       "useCase": "Patona product line — เน้นความอบอุ่น พลังงาน",
       "guidelines": [
         "ใช้ aerospace-orange เป็น brand primary",
-        "ปุ่ม CTA หลักใช้ variant=solid + themeColor=primary",
+        "ปุ่ม CTA หลักใช้ variant=\"solid\" + tone=\"brand\" (DS 3.0 — ห้ามใช้ themeColor)",
         "Link และ info ใช้ sky color"
       ]
     },
@@ -47,8 +47,8 @@
     }
   ],
   "usage": {
-    "howToSwitch": "ครอบ component ด้วย <ssk-theme-provider brand=\"patona|ccs3|oc2plus\"> หรือเรียก injectSemanticTokens(brand) ที่ root",
+    "howToSwitch": "ครอบ root ด้วย <ssk-app-shell-provider brand=\"patona|ccs3|oc2plus\"> (DS 3.0) หรือเรียก injectSemanticTokens(brand) ที่ root. หมายเหตุ: <ssk-theme-provider> ของ DS 2.0 ถูก deprecate — ใช้ ssk-app-shell-provider แทน",
     "default": "ccs3",
-    "tokenInjection": "ssk-theme-provider จะ inject ทั้ง --ssk-colors-* primitive และ semantic tokens (--bg-brand-primary, --fg-brand-primary, etc.)"
+    "tokenInjection": "ssk-app-shell-provider จะ inject ทั้ง --ssk-colors-* primitive และ semantic tokens (--bg-brand-primary, --fg-brand-primary, --button-solid-bg, ฯลฯ) อัตโนมัติ"
   }
 }
