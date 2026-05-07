@@ -154,8 +154,26 @@ const FONT_RULES = `
   <ssk-text>body text</ssk-text>
   <ssk-heading>heading</ssk-heading>
 
-### Colors & tokens
-- Use themeColor prop for danger/success/warning/info, NOT variant
+### Buttons — semantic intent (DS 3.0)
+✅ CORRECT — combine \`variant\` + \`tone\`:
+  <ssk-button variant="solid"   tone="brand">Save</ssk-button>
+  <ssk-button variant="outline" tone="danger">Delete</ssk-button>
+  <ssk-button variant="ghost"   tone="brand">Cancel</ssk-button>
+
+  variants: solid | outline | ghost | solid-light
+  tones:    brand | danger | success | warning | info
+
+❌ DEPRECATED (do not use — will be removed in DS 3.4.0):
+  themeColor=...      ← legacy, replaced by tone
+  backgroundColor=... ← bypasses semantic tokens
+  fontSize=...        ← below 18px violates DS 3.0 minimum
+
+### Provider (DS 3.0)
+- Wrap root with \`<ssk-app-shell-provider brand="...">\` (NOT \`<ssk-theme-provider>\`)
+- Inside, use \`<ssk-app-shell>\` for full-screen app pages with sidebar/navbar
+- For modal-like pages (login, marketing landing) the provider may wrap content directly
+
+### Colors & tokens (custom CSS)
 - For custom CSS: use var(--text-primary), var(--bg-primary), var(--stroke-primary)
 - Never hardcode hex colors
 - Never use --ssk-colors-* primitives directly
@@ -173,7 +191,7 @@ export function getPrompt(name: string, args: Record<string, string> = {}): { me
 Use this exact structure:
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-card>
     <ssk-heading slot="header">เข้าสู่ระบบ</ssk-heading>
     <form style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
@@ -181,11 +199,11 @@ Use this exact structure:
       <ssk-input label="Password" type="password" required></ssk-input>
 ${extraInputs}
       <ssk-checkbox label="Remember me"></ssk-checkbox>
-      <ssk-button variant="solid" themeColor="primary" type="submit">เข้าสู่ระบบ</ssk-button>
+      <ssk-button variant="solid" tone="brand" type="submit">เข้าสู่ระบบ</ssk-button>
       <ssk-button variant="ghost">ลืมรหัสผ่าน?</ssk-button>
     </form>
   </ssk-card>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 ${FONT_RULES}`;
     },
@@ -201,7 +219,7 @@ ${FONT_RULES}`;
 Metrics: ${metrics.join(", ")}
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-app-shell>
     <ssk-page-header title="Dashboard"></ssk-page-header>
     <ssk-filter-bar>
@@ -214,7 +232,7 @@ ${stats}
       <ssk-donut-chart></ssk-donut-chart>
     </ssk-widget-grid>
   </ssk-app-shell>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 
 Use get_component for each tag to fill in actual props (data, labels).
@@ -228,10 +246,10 @@ ${FONT_RULES}`;
 Include: list view, create modal, edit modal, delete confirmation.
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-app-shell>
     <ssk-page-header title="${entity} List">
-      <ssk-button slot="action" variant="solid" themeColor="primary" id="btn-create">+ New ${entity}</ssk-button>
+      <ssk-button slot="action" variant="solid" tone="brand" id="btn-create">+ New ${entity}</ssk-button>
     </ssk-page-header>
     <ssk-filter-bar>
       <ssk-input slot="search" placeholder="Search ${entity}..."></ssk-input>
@@ -243,10 +261,10 @@ Include: list view, create modal, edit modal, delete confirmation.
       <ssk-heading slot="header">Create ${entity}</ssk-heading>
       <!-- form fields here — use ssk-input, ssk-dropdown, ssk-checkbox -->
       <ssk-button slot="footer" variant="outline">Cancel</ssk-button>
-      <ssk-button slot="footer" variant="solid" themeColor="primary">Save</ssk-button>
+      <ssk-button slot="footer" variant="solid" tone="brand">Save</ssk-button>
     </ssk-modal>
   </ssk-app-shell>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 ${FONT_RULES}`;
     },
@@ -255,7 +273,7 @@ ${FONT_RULES}`;
       `Create a settings page using DS 3.0 with brand="${brand}".
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-app-shell>
     <ssk-page-header title="Settings"></ssk-page-header>
     <ssk-tabs>
@@ -264,7 +282,7 @@ ${FONT_RULES}`;
           <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
             <ssk-input label="Name"></ssk-input>
             <ssk-input label="Email" type="email"></ssk-input>
-            <ssk-button variant="solid" themeColor="primary">Save</ssk-button>
+            <ssk-button variant="solid" tone="brand">Save</ssk-button>
           </div>
         </ssk-card>
       </ssk-tab>
@@ -273,7 +291,7 @@ ${FONT_RULES}`;
           <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px;">
             <ssk-input label="Current password" type="password"></ssk-input>
             <ssk-input label="New password" type="password"></ssk-input>
-            <ssk-button variant="solid" themeColor="primary">Update password</ssk-button>
+            <ssk-button variant="solid" tone="brand">Update password</ssk-button>
           </div>
         </ssk-card>
       </ssk-tab>
@@ -285,7 +303,7 @@ ${FONT_RULES}`;
       </ssk-tab>
     </ssk-tabs>
   </ssk-app-shell>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 ${FONT_RULES}`,
 
@@ -294,16 +312,16 @@ ${FONT_RULES}`,
       return `Create a marketing landing page for "${product}" using DS 3.0 with brand="${brand}".
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-top-navbar>
     <ssk-logo slot="logo"></ssk-logo>
-    <ssk-button slot="action" variant="solid" themeColor="primary">Sign up</ssk-button>
+    <ssk-button slot="action" variant="solid" tone="brand">Sign up</ssk-button>
   </ssk-top-navbar>
 
   <section style="padding: 40px 24px; display: flex; flex-direction: column; gap: 16px;">
     <ssk-heading size="xl">${product} — เริ่มต้นใช้งาน</ssk-heading>
     <ssk-text>คำอธิบายสั้น ๆ เกี่ยวกับ ${product}</ssk-text>
-    <ssk-button variant="solid" themeColor="primary" size="lg">Get started</ssk-button>
+    <ssk-button variant="solid" tone="brand" size="lg">Get started</ssk-button>
   </section>
 
   <section style="padding: 0 24px 40px;">
@@ -313,7 +331,7 @@ ${FONT_RULES}`,
       <ssk-card>Feature 3</ssk-card>
     </ssk-widget-grid>
   </section>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 ${FONT_RULES}`;
     },
@@ -329,10 +347,10 @@ ${FONT_RULES}`;
 Columns: ${columns.join(", ")}
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-app-shell>
     <ssk-page-header title="${entity} List">
-      <ssk-button slot="action" variant="solid" themeColor="primary">+ New ${entity}</ssk-button>
+      <ssk-button slot="action" variant="solid" tone="brand">+ New ${entity}</ssk-button>
     </ssk-page-header>
     <ssk-filter-bar>
       <ssk-input slot="search" placeholder="Search ${entity}..."></ssk-input>
@@ -351,7 +369,7 @@ ${colHeader}
     </ssk-table>
     <ssk-pagination total="100" pageSize="10"></ssk-pagination>
   </ssk-app-shell>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 ${FONT_RULES}`;
     },
@@ -366,7 +384,7 @@ ${FONT_RULES}`;
 Steps: ${steps.join(" → ")}
 
 \`\`\`html
-<ssk-theme-provider brand="${brand}">
+<ssk-app-shell-provider brand="${brand}">
   <ssk-container>
     <ssk-stepper>
 ${stepItems}
@@ -381,12 +399,12 @@ ${stepItems}
 
     <div style="display: flex; justify-content: space-between; margin-top: 24px;">
       <ssk-button variant="outline">ย้อนกลับ</ssk-button>
-      <ssk-button variant="solid" themeColor="primary">ถัดไป</ssk-button>
+      <ssk-button variant="solid" tone="brand">ถัดไป</ssk-button>
     </div>
 
     <ssk-progress-bar value="25" max="100"></ssk-progress-bar>
   </ssk-container>
-</ssk-theme-provider>
+</ssk-app-shell-provider>
 \`\`\`
 
 Validate each step before allowing next. Use ssk-alert themeColor="danger" for validation errors.
@@ -418,7 +436,7 @@ This is the standard starting structure for ALL Sellsuki product features.
     <!-- Main content -->
     <main>
       <ssk-page-header title="${featureName}">
-        <ssk-button slot="action" variant="solid" themeColor="primary">
+        <ssk-button slot="action" variant="solid" tone="brand">
           ${ctaLabel}
         </ssk-button>
       </ssk-page-header>
@@ -456,7 +474,7 @@ ${APPSHELL_RULES}${FONT_RULES}`;
 
     <main>
       <ssk-page-header title="${entity} List">
-        <ssk-button slot="action" variant="solid" themeColor="primary">
+        <ssk-button slot="action" variant="solid" tone="brand">
           + New ${entity}
         </ssk-button>
       </ssk-page-header>
@@ -539,7 +557,7 @@ ${APPSHELL_RULES}${FONT_RULES}`;
 ${formFields}
           <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px;">
             <ssk-button variant="outline" type="button">Cancel</ssk-button>
-            <ssk-button variant="solid" themeColor="primary" type="submit">
+            <ssk-button variant="solid" tone="brand" type="submit">
               ${submitLabel}
             </ssk-button>
           </div>

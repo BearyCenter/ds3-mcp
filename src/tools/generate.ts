@@ -53,14 +53,14 @@ export function generateForm(input: z.infer<typeof generateFormSchema>) {
   const formBody = fields.map(renderField).join("\n");
   const heading = title ? `  <ssk-heading slot="header">${title}</ssk-heading>\n` : "";
 
-  const code = `<ssk-theme-provider brand="${brand}">
+  const code = `<ssk-app-shell-provider brand="${brand}">
   <ssk-card>
 ${heading}    <form>
 ${formBody}
-      <ssk-button variant="solid" themeColor="primary" type="submit">${submitLabel}</ssk-button>
+      <ssk-button variant="solid" tone="brand" type="submit">${submitLabel}</ssk-button>
     </form>
   </ssk-card>
-</ssk-theme-provider>`;
+</ssk-app-shell-provider>`;
 
   return {
     brand,
@@ -97,20 +97,20 @@ export function generatePageLayout(input: z.infer<typeof generatePageLayoutSchem
     list: `      <ssk-table sortable selectable></ssk-table>\n      <ssk-pagination></ssk-pagination>`,
     detail: `      <ssk-card>\n        <ssk-heading>${title} Details</ssk-heading>\n        <!-- detail content -->\n      </ssk-card>`,
     settings: `      <ssk-tabs>\n        <ssk-tab label="Profile"></ssk-tab>\n        <ssk-tab label="Security"></ssk-tab>\n        <ssk-tab label="Notifications"></ssk-tab>\n      </ssk-tabs>`,
-    landing: `      <section>\n        <ssk-heading size="xl">${title}</ssk-heading>\n        <ssk-button variant="solid" themeColor="primary" size="lg">Get started</ssk-button>\n      </section>`,
+    landing: `      <section>\n        <ssk-heading size="xl">${title}</ssk-heading>\n        <ssk-button variant="solid" tone="brand" size="lg">Get started</ssk-button>\n      </section>`,
   };
 
   const shellOpen = hasSidebar ? `  <ssk-app-shell>\n    <ssk-sidebar slot="sidebar"></ssk-sidebar>` : "  <ssk-app-shell>";
   const shellClose = "  </ssk-app-shell>";
 
-  const code = `<ssk-theme-provider brand="${brand}">
+  const code = `<ssk-app-shell-provider brand="${brand}">
 ${shellOpen}
     <main>
       <ssk-page-header title="${title}"></ssk-page-header>
 ${filter}${contentByType[pageType]}
     </main>
 ${shellClose}
-</ssk-theme-provider>`;
+</ssk-app-shell-provider>`;
 
   return {
     brand,
